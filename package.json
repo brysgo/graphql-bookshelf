@@ -29,19 +29,17 @@
     "babel-runtime": "^5.8.20",
     "bookshelf": "^0.8.1",
     "co": "^4.6.0",
-    "jest": "^0.1.40",
-    "jest-cli": "^0.4.18",
+    "jest-cli": "facebook/jest#0.5.x",
     "knex": "^0.8.6",
-    "knex-cleaner": "^1.1.1",
     "sqlite3": "^3.0.10"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "unmockedModulePathPatterns": [
       ".*"
-    ]
-  },
-  "dependencies": {
-    "regenerator": "^0.8.36"
+    ],
+    "testDirectoryName": "specs",
+    "setupEnvScriptFile": "<rootDir>/config/env.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/config/setup.js"
   }
 }

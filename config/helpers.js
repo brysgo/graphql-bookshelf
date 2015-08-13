@@ -1,14 +1,15 @@
-var knex = require('../models/connection').knex;
-var knexCleaner = require('knex-cleaner');
-require('babel-runtime/regenerator');
-import co from 'co';
-
-function useGeneratorsWith(pit) {
-  return (msg, fn) => pit(msg, co.wrap(fn))
+function clean() {
+  return [
+    'students',
+    'classrooms',
+    'classrooms_students',
+    'homeworks',
+    'subjects'
+  ].reduce((promise, table) =>
+    promise.then(knex(table).delete('*'))
+  , Promise.resolve());
 }
 
 export default {
-  knex,
-  knexCleaner,
-  useGeneratorsWith,
+  clean
 }

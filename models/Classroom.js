@@ -1,4 +1,4 @@
-import { bookshelf, knex } from './connection'
+import { bookshelf, knex } from '../connection'
 import Student from './Student'
 import Subject from './Subject'
 import Homework from './Homework'

@@ -3,8 +3,9 @@ import ClassroomType from './ClassroomType'
 import HomeworkType from './HomeworkType'
 import {
   GraphQLInt,
+  GraphQLList,
   GraphQLNonNull,
-  GraphQLList
+  GraphQLString,
 } from 'graphql'
 
 export default new BookshelfType({
@@ -13,6 +14,10 @@ export default new BookshelfType({
   fields: (model) => ({
     id: model.attr({
       type: new GraphQLNonNull(GraphQLInt),
+      description: 'The id of the student.',
+    }),
+    name: model.attr({
+      type: GraphQLString,
       description: 'The id of the student.',
     }),
     homeworks: model.hasMany({
@@ -30,7 +35,7 @@ export default new BookshelfType({
       },
       resolve: (qb, modelInstance, {id}) => {
         if (id) {
-          qb.where({room_id: id});
+          qb.where({classroom_id: id});
         }
       }
     })

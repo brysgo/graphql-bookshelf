@@ -26,19 +26,19 @@ export default class BookshelfType extends GraphQLObjectType {
   }
 
   belongsTo (options) {
-    options.resolve = (modelInstance, params, source, fieldASTs) => {
-      return modelInstance.related(fieldASTs.name.value.toUnderscore()).fetch();
+    options.resolve = (modelInstance, params, info) => {
+      return modelInstance.related(info.fieldName.toUnderscore()).fetch();
     };
     return options;
   }
 
   hasMany (options) {
     let passBuilder = options.resolve;
-    options.resolve = (modelInstance, params, source, fieldASTs) => {
+    options.resolve = (modelInstance, params, info) => {
       let passFn;
       if (passBuilder)
-        passFn = function(qb) { passBuilder(qb, modelInstance, params, source, fieldASTs) };
-      let fieldName = fieldASTs.name.value.toUnderscore();
+        passFn = function(qb) { passBuilder(qb, modelInstance, params, info) };
+      let fieldName = info.fieldName.toUnderscore();
       let loadOptions = {};
       loadOptions[fieldName] = passFn;
       return modelInstance.load(loadOptions).then(
@@ -52,8 +52,8 @@ export default class BookshelfType extends GraphQLObjectType {
   }
 
   attr (options) {
-    options.resolve = (modelInstance, params, source, fieldASTs) => {
-      return modelInstance.get(fieldASTs.name.value.toUnderscore());
+    options.resolve = (modelInstance, params, info) => {
+      return modelInstance.get(info.fieldName.toUnderscore());
     }
     return options;
   }

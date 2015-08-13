@@ -1,4 +1,4 @@
-import { bookshelf } from './connection'
+import { bookshelf } from '../connection'
 import Classroom from './Classroom'
 
 export default bookshelf.Model.extend({

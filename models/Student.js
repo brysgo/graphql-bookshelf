@@ -1,4 +1,4 @@
-import { bookshelf } from './connection'
+import { bookshelf } from '../connection'
 import Classroom from './Classroom'
 import Homework from './Homework'
 

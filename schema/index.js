@@ -1,9 +1,11 @@
 import {
+  GraphQLInt,
   GraphQLObjectType,
   GraphQLSchema,
   graphql,
 } from 'graphql'
 import StudentType from './StudentType'
+import Student from '../models/Student'
 
 var schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -26,4 +28,6 @@ var schema = new GraphQLSchema({
   })
 });
 
-export default graphql.bind(undefined, schema);
+export default function() {
+  return graphql(schema, ...arguments);
+};
