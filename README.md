@@ -1,5 +1,9 @@
 # GraphQL + BookshelfJS
 This is an early version of the `BookshelfType` I wrote to help me link up my Bookshelf models (built on top of Postgres) to my GraphQL schema.
+### Install
+`npm install --save graphql-bookshelf`
+...
+`var BookshelfType = require('graphql-bookshelf');
 ### Example use...
 ```js
 // Use `BookshelfType` instead of `GraphQLObjectType`...
