@@ -7,9 +7,9 @@ This is an early version of the `BookshelfType` I wrote to help me link up my Bo
 
 `var BookshelfType = require('graphql-bookshelf');`
 ### Example use...
-Use `BookshelfType` instead of `GraphQLObjectType`...
+Use `BookshelfType` inside of `GraphQLObjectType`...
 ```js
-export default new BookshelfType({
+export default new GraphQLObjectType(BookshelfType({
   name: 'Classroom',
   description: 'Need I say more?',
   // ...and an object gets passed into the fields to help with your model.
@@ -62,7 +62,7 @@ Or just leave it alone...
       },
     }
   }),
-});
+}));
 ```
 
 [See this example in action via the tests...](https://github.com/brysgo/graphql-bookshelf/blob/master/schema/ClassroomType.js)
