@@ -45,7 +45,7 @@
     "setupEnvScriptFile": "<rootDir>/config/env.js",
     "setupTestFrameworkScriptFile": "<rootDir>/config/setup.js"
   },
-  "dependencies": {
+  "peerDependencies": {
     "graphql": "^0.3.0"
   }
 }

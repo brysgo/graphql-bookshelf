@@ -6,25 +6,26 @@ import {
   GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
+  GraphQLObjectType,
 } from 'graphql'
 
-export default new BookshelfType({
+export default new GraphQLObjectType(BookshelfType({
   name: 'Classroom',
   description: 'Need I say more?',
-  fields: (model) => ({
-    id: model.attr({
+  fields: function() {return {
+    id: this.attr({
       type: new GraphQLNonNull(GraphQLInt),
       description: 'The id of the classroom.',
     }),
-    subject: model.belongsTo({
+    subject: this.belongsTo({
       type: SubjectType,
       description: 'The subject of the classroom.',
     }),
-    students: model.hasMany({
+    students: this.hasMany({
       type: new GraphQLList(StudentType),
       description: 'Students in the classroom.',
     }),
-    homeworks: model.hasMany({
+    homeworks: this.hasMany({
       type: new GraphQLList(HomeworkType),
       description: 'Homework submitted to the classroom (latest to oldest).',
       resolve: (qb) => {
@@ -38,5 +39,5 @@ export default new BookshelfType({
         return model.studentCount();
       },
     }
-  }),
-});
+  }},
+}));

@@ -4,10 +4,11 @@ import StudentType from './StudentType'
 import {
   GraphQLInt,
   GraphQLNonNull,
+  GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
 
-export default new BookshelfType({
+export default new GraphQLObjectType(BookshelfType({
   name: 'Homework',
   description: 'Homework submitted by the student.',
   fields: (model) => ({
@@ -32,4 +33,4 @@ export default new BookshelfType({
       description: 'Creation date of the homework.'
     })
   }),
-});
+}));

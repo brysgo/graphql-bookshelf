@@ -1,23 +1,8 @@
-import {
-  GraphQLList,
-  GraphQLObjectType,
-} from 'graphql'
-
 String.prototype.toUnderscore = function(){
   return this.replace(/([A-Z])/g, function($1){return "_"+$1.toLowerCase();});
 };
 
-export default class BookshelfType extends GraphQLObjectType {
-  constructor (config) {
-    let fields = config.fields;
-    let _this;
-    config.fields = function() {
-      return fields.call(null, _this);
-    }
-    super(config);
-    _this = this;
-  }
-
+class BookshelfType {
   static collection (aCollection) {
     if ('then' in aCollection)
       return aCollection.then((c) => c.models);
@@ -58,3 +43,11 @@ export default class BookshelfType extends GraphQLObjectType {
     return options;
   }
 }
+
+export default function BookshelfWrapper(config) {
+  let fields = config.fields;
+  let ref = new BookshelfType();
+  config.fields = (() => fields.call(ref, ref));
+  return config;
+}
+BookshelfWrapper.collection = BookshelfType.collection;

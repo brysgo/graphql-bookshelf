@@ -5,10 +5,11 @@ import {
   GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
+  GraphQLObjectType,
   GraphQLString,
 } from 'graphql'
 
-export default new BookshelfType({
+export default new GraphQLObjectType(BookshelfType({
   name: 'Student',
   description: 'A humble student.',
   fields: (model) => ({
@@ -40,4 +41,4 @@ export default new BookshelfType({
       }
     })
   }),
-});
+}));
