@@ -4,7 +4,10 @@
   "description": "Some help defining schema around bookshelfjs models.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jest -b"
+    "test": "./node_modules/.bin/jest -b",
+    "build": "./node_modules/.bin/babel src/index.js > index.js",
+    "pretest": "npm run-script build",
+    "prepublish": "npm run-script build"
   },
   "repository": {
     "type": "git",
@@ -41,5 +44,8 @@
     "testDirectoryName": "specs",
     "setupEnvScriptFile": "<rootDir>/config/env.js",
     "setupTestFrameworkScriptFile": "<rootDir>/config/setup.js"
+  },
+  "dependencies": {
+    "graphql": "^0.3.0"
   }
 }
