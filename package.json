@@ -33,7 +33,7 @@
     "bookshelf": "^0.8.1",
     "co": "^4.6.0",
     "graphql": "^0.3.0",
-    "jest-cli": "facebook/jest#0.5.x",
+    "jest-cli": "facebook/jest",
     "knex": "^0.8.6",
     "sqlite3": "^3.0.10"
   },
