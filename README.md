@@ -1,4 +1,7 @@
 # GraphQL + BookshelfJS
+
+[![peerDependency Status](https://david-dm.org/brysgo/graphql-bookshelf/peer-status.svg)](https://david-dm.org/brysgo/graphql-bookshelf#info=peerDependencies)
+
 This is an early version of the `BookshelfType` I wrote to help me link up my Bookshelf models (built on top of Postgres) to my GraphQL schema.
 ### Install
 `npm install --save graphql-bookshelf`
