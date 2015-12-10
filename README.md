@@ -1,5 +1,7 @@
 # GraphQL + BookshelfJS
 
+[![Join the chat at https://gitter.im/brysgo/graphql-bookshelf](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/brysgo/graphql-bookshelf?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![peerDependency Status](https://david-dm.org/brysgo/graphql-bookshelf/peer-status.svg)](https://david-dm.org/brysgo/graphql-bookshelf#info=peerDependencies)
 
 This is an early version of the `BookshelfType` I wrote to help me link up my Bookshelf models (built on top of Postgres) to my GraphQL schema.
