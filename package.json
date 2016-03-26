@@ -34,7 +34,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "bookshelf": "^0.8.1",
     "co": "^4.6.0",
-    "graphql": "^0.4.9",
+    "graphql": "^0.4.18",
     "jest-cli": "^0.9.2",
     "knex": "^0.8.6",
     "sqlite3": "^3.0.10"
@@ -51,6 +51,6 @@
     "setupTestFrameworkScriptFile": "<rootDir>/config/setup.js"
   },
   "peerDependencies": {
-    "graphql": "^0.4.9"
+    "graphql": "^0.4.18"
   }
 }
