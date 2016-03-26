@@ -1,4 +1,3 @@
-import regeneratorRuntime from 'babel-runtime/regenerator';
-global.regeneratorRuntime = regeneratorRuntime;
+import "babel-polyfill";
 
 global.knex = require('../connection').knex;

@@ -3,4 +3,5 @@ import Homework from './Homework'
 import Student from './Student'
 import Subject from './Subject'
 
-export default { Classroom, Homework, Student, Subject }
+
+module.exports = { Classroom, Homework, Student, Subject }

@@ -1,4 +1,4 @@
-function clean() {
+export function clean() {
   return [
     'students',
     'classrooms',
@@ -8,8 +8,4 @@ function clean() {
   ].reduce((promise, table) =>
     promise.then(knex(table).delete('*'))
   , Promise.resolve());
-}
-
-export default {
-  clean
 }
