@@ -3,3 +3,5 @@ node_js:
  - "stable"
 services:
  - sqlite3
+before_script:
+ - knex migrate:latest
