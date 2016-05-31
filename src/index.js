@@ -11,7 +11,7 @@ class BookshelfType {
   }
 
   belongsTo (options) {
-    options.resolve = (modelInstance, params, info) => {
+    options.resolve = (modelInstance, params, context, info) => {
       return modelInstance.related(info.fieldName.toUnderscore()).fetch();
     };
     return options;
@@ -19,10 +19,10 @@ class BookshelfType {
 
   hasMany (options) {
     let passBuilder = options.resolve;
-    options.resolve = (modelInstance, params, info) => {
+    options.resolve = (modelInstance, params, context, info) => {
       let passFn;
       if (passBuilder)
-        passFn = function(qb) { passBuilder(qb, modelInstance, params, info) };
+        passFn = function(qb) { passBuilder(qb, modelInstance, params, context, info) };
       let fieldName = info.fieldName.toUnderscore();
       let loadOptions = {};
       loadOptions[fieldName] = passFn;
@@ -37,7 +37,7 @@ class BookshelfType {
   }
 
   attr (options) {
-    options.resolve = (modelInstance, params, info) => {
+    options.resolve = (modelInstance, params, context, info) => {
       return modelInstance.get(info.fieldName.toUnderscore());
     }
     return options;
