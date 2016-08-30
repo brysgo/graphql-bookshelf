@@ -1,6 +1,6 @@
 {
   "name": "graphql-bookshelf",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Some help defining schema around bookshelfjs models.",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "bookshelf": "^0.10.0",
     "co": "^4.6.0",
-    "graphql": "^0.6.2",
+    "graphql": "^0.7.0",
     "jest-cli": "^12.1.1",
     "knex": "^0.10.0",
     "sqlite3": "^3.0.10"
@@ -52,6 +52,6 @@
   },
   "peerDependencies": {
     "bookshelf": "^0.10.0",
-    "graphql": "^0.6.2"
+    "graphql": "^0.7.0"
   }
 }
