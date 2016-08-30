@@ -72,6 +72,12 @@ Or just leave it alone...
 }));
 ```
 
+### Goals & Philosophy
+
+This library is intended to keep it simple. Automatic generation of schema can leave use-cases out, while using bookshelf in every resolve calls for large ammounts of repetitive boilerplate.
+
+Another thing this library could help with is optimization. Turing graphql queries into database calls can be expensive, but using a layer in between can help make those optimizations that would get ugly and repetative in every resolve.
+
 [See this example in action via the tests...](https://github.com/brysgo/graphql-bookshelf/blob/master/schema/ClassroomType.js)
 
 ### Contributing
