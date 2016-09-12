@@ -4,10 +4,7 @@ String.prototype.toUnderscore = function(){
 
 class BookshelfType {
   static collection (aCollection) {
-    if ('then' in aCollection)
-      return aCollection.then((c) => c.models);
-    else
-      return aCollection.models;
+    return Promise.resolve(aCollection).then((c) => c.models);
   }
 
   belongsTo (options) {
@@ -19,6 +16,7 @@ class BookshelfType {
 
   hasMany (options) {
     let passBuilder = options.resolve;
+    const isConnection = options.type.constructor.name != 'GraphQLList'
     options.resolve = (modelInstance, params, context, info) => {
       let passFn;
       if (passBuilder)
@@ -27,10 +25,15 @@ class BookshelfType {
       let loadOptions = {};
       loadOptions[fieldName] = passFn;
       return modelInstance.clone().load(loadOptions).then(
-        (model) =>
-          this.constructor.collection(
-            model.related(fieldName)
-          )
+        (model) => {
+          return this.constructor.collection( model.related(fieldName) ).then((models) => {
+            if (isConnection) {
+              return require('graphql-relay').connectionFromArray(models, options.args);
+            } else {
+              return models;
+            }
+          })
+        }
       );
     };
     return options;

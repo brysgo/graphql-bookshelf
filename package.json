@@ -35,6 +35,7 @@
     "bookshelf": "^0.10.0",
     "co": "^4.6.0",
     "graphql": "^0.7.0",
+    "graphql-relay": "^0.4.3",
     "jest-cli": "^12.1.1",
     "knex": "^0.10.0",
     "sqlite3": "^3.0.10"

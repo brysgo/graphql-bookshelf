@@ -71,6 +71,24 @@ Or just leave it alone...
   }),
 }));
 ```
+Are you using graphql-relay-js? Define some connection associations.
+
+At the top:
+```js
+    import {
+      connectionDefinitions,
+      connectionArgs
+    } from 'graphql-relay';
+    
+```
+And in your schema...
+```js
+    homeworks: model.hasMany({
+      type: connectionDefinitions({nodeType: HomeworkType}).connectionType,
+      args: connectionArgs,
+      description: 'Homework submitted to the classroom.'
+    }),
+```
 
 ### Goals & Philosophy
 

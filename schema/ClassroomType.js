@@ -8,6 +8,10 @@ import {
   GraphQLNonNull,
   GraphQLObjectType,
 } from 'graphql'
+import {
+  connectionDefinitions,
+  connectionArgs
+} from 'graphql-relay';
 
 export default new GraphQLObjectType(BookshelfType({
   name: 'Classroom',
@@ -26,7 +30,8 @@ export default new GraphQLObjectType(BookshelfType({
       description: 'Students in the classroom.',
     }),
     homeworks: this.hasMany({
-      type: new GraphQLList(HomeworkType),
+      type: connectionDefinitions({nodeType: HomeworkType}).connectionType,
+      args: connectionArgs,
       description: 'Homework submitted to the classroom (latest to oldest).',
       resolve: (qb) => {
         qb.orderBy('created_at', 'DESC');

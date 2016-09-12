@@ -19,7 +19,7 @@ describe('hasMany', function() {
         }
       }`
 
-      var results = yield graphqlWithSchema(query);
+      const results = yield graphqlWithSchema(query);
 
       expect(results).toEqual({
         data: {
@@ -47,7 +47,7 @@ describe('hasMany', function() {
         }
       }`
 
-      var results = yield graphqlWithSchema(query);
+      const results = yield graphqlWithSchema(query);
 
       expect(results).toEqual({
         data: {
@@ -61,8 +61,11 @@ describe('hasMany', function() {
       expect(classrooms).toContain({ id: classroom1.get('id') });
       expect(classrooms).toContain({ id: classroom2.get('id') });
     });
-
-    it('returns bookshelf hasMany associated data', function* () {
+    
+  });
+  
+  describe('with a relay connection type', function() {
+    it('returns a connection instead of an array', function* () {
       yield clean();
       var student = yield Student.forge({name: 'Joe Shmoe'}).save();
       var classroom = yield student.classrooms().create();
@@ -73,27 +76,33 @@ describe('hasMany', function() {
         viewer(id: ${student.get('id')}) {
           classrooms {
             homeworks {
-              content
+              edges {
+                node {
+                  content
+                }
+              }
             }
           }
         }
       }`
 
-      var results = yield graphqlWithSchema(query);
+      const results = yield graphqlWithSchema(query);
 
       expect(results).toEqual({
         data: {
           viewer: {
-            classrooms: [
-              { homeworks: jasmine.any(Array) }
-            ]
+            classrooms: [{
+              homeworks: {
+                edges: jasmine.any(Array)
+              }
+            }]
           }
         }
       });
-      let { homeworks } = results.data.viewer.classrooms[0];
+      let { edges } = results.data.viewer.classrooms[0].homeworks;
 
-      expect(homeworks).toContain({ content: homework1.get('content') });
-      expect(homeworks).toContain({ content: homework2.get('content') });
+      expect(edges).toContain({ node: { content: homework1.get('content') }});
+      expect(edges).toContain({ node: { content: homework2.get('content') }});
     });
   });
 });
