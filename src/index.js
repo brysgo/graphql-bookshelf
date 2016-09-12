@@ -26,7 +26,7 @@ class BookshelfType {
       let fieldName = info.fieldName.toUnderscore();
       let loadOptions = {};
       loadOptions[fieldName] = passFn;
-      return modelInstance.load(loadOptions).then(
+      return modelInstance.clone().load(loadOptions).then(
         (model) =>
           this.constructor.collection(
             model.related(fieldName)
