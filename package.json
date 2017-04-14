@@ -34,7 +34,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "bookshelf": "^0.10.0",
     "co": "^4.6.0",
-    "graphql": "^0.9.1",
+    "graphql": "^0.9.3",
     "graphql-relay": "^0.5.1",
     "jest-cli": "^19.0.2",
     "knex": "^0.12.9",
