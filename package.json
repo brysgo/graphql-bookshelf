@@ -37,7 +37,7 @@
     "graphql": "^0.9.3",
     "graphql-relay": "^0.5.1",
     "jest-cli": "^19.0.2",
-    "knex": "^0.12.9",
+    "knex": "^0.13.0",
     "sqlite3": "^3.0.10"
   },
   "jest": {
