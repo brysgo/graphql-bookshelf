@@ -9,7 +9,7 @@ class BookshelfType {
 
   belongsTo (options) {
     options.resolve = (modelInstance, params, context, info) => {
-      const relation =  modelInstance.related(info.fieldName) ||  modelInstance.related(info.fieldName.toUnderscore());
+      const relation =  modelInstance.related(info.fieldName) !== undefined ? modelInstance.related(info.fieldName) : modelInstance.related(info.fieldName.toUnderscore());
       return relation.fetch();
     };
     return options;
@@ -22,7 +22,7 @@ class BookshelfType {
       let passFn;
       if (passBuilder)
         passFn = function(qb) { passBuilder(qb, modelInstance, params, context, info) };
-      let fieldName = modelInstance.get(info.fieldName) ? info.fieldName : info.fieldName.toUnderscore();
+      let fieldName = modelInstance.get(info.fieldName) !== undefined ? info.fieldName : info.fieldName.toUnderscore();
       let loadOptions = {};
       loadOptions[fieldName] = passFn;
       return modelInstance.clone().load(loadOptions).then(
@@ -42,7 +42,7 @@ class BookshelfType {
 
   attr (options) {
     options.resolve = (modelInstance, params, context, info) => {
-      const property = modelInstance.get(info.fieldName) || modelInstance.get(info.fieldName.toUnderscore());
+      const property = modelInstance.get(info.fieldName) !== undefined ? modelInstance.get(info.fieldName) : modelInstance.get(info.fieldName.toUnderscore());
       return property;
     }
     return options;
