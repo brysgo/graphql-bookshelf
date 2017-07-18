@@ -5,11 +5,11 @@ import graphqlWithSchema from '../schema';
 describe('hasMany', function() {
 
   describe('with a resolve function', function() {
-    it('passes a KnexJS query builder through to the resolve', function* () {
-      yield clean();
-      var student = yield Student.forge({name: 'Joe Shmoe'}).save();
-      var classroom1 = yield student.classrooms().create();
-      var classroom2 = yield student.classrooms().create();
+    it('passes a KnexJS query builder through to the resolve', async function () {
+      await clean();
+      var student = await Student.forge({name: 'Joe Shmoe'}).save();
+      var classroom1 = await student.classrooms().create();
+      var classroom2 = await student.classrooms().create();
 
       let query = `{
         viewer(id: ${student.get('id')}) {
@@ -19,7 +19,7 @@ describe('hasMany', function() {
         }
       }`
 
-      const results = yield graphqlWithSchema(query);
+      const results = await graphqlWithSchema(query);
 
       expect(results).toEqual({
         data: {
@@ -32,12 +32,12 @@ describe('hasMany', function() {
   });
 
   describe('without a resolve function', function() {
-    it('returns bookshelf belongsToMany associated data', function* () {
-      yield clean();
-      var student = yield Student.forge({name: 'Joe Shmoe'}).save();
-      var classroom1 = yield student.classrooms().create();
-      var classroom2 = yield student.classrooms().create();
-      var student2 = yield classroom2.students().create({name: 'Marvin Martian'});
+    it('returns bookshelf belongsToMany associated data', async function () {
+      await clean();
+      var student = await Student.forge({name: 'Joe Shmoe'}).save();
+      var classroom1 = await student.classrooms().create();
+      var classroom2 = await student.classrooms().create();
+      var student2 = await classroom2.students().create({name: 'Marvin Martian'});
 
       let query = `{
         viewer(id: ${student.get('id')}) {
@@ -47,7 +47,7 @@ describe('hasMany', function() {
         }
       }`
 
-      const results = yield graphqlWithSchema(query);
+      const results = await graphqlWithSchema(query);
 
       expect(results).toEqual({
         data: {
@@ -58,19 +58,20 @@ describe('hasMany', function() {
       });
       let { classrooms } = results.data.viewer;
 
-      expect(classrooms).toContain({ id: classroom1.get('id') });
-      expect(classrooms).toContain({ id: classroom2.get('id') });
+      const stripped = classrooms.map(({id}) => id);
+      expect(stripped).toContain(classroom1.get('id'));
+      expect(stripped).toContain(classroom2.get('id'));
     });
-    
+
   });
-  
+
   describe('with a relay connection type', function() {
-    it('returns a connection instead of an array', function* () {
-      yield clean();
-      var student = yield Student.forge({name: 'Joe Shmoe'}).save();
-      var classroom = yield student.classrooms().create();
-      var homework1 = yield classroom.homeworks().create({content: 'I did it...'});
-      var homework2 = yield classroom.homeworks().create({content: 'Look!!!'});
+    it('returns a connection instead of an array', async function () {
+      await clean();
+      var student = await Student.forge({name: 'Joe Shmoe'}).save();
+      var classroom = await student.classrooms().create();
+      var homework1 = await classroom.homeworks().create({content: 'I did it...'});
+      var homework2 = await classroom.homeworks().create({content: 'Look!!!'});
 
       let query = `{
         viewer(id: ${student.get('id')}) {
@@ -86,7 +87,7 @@ describe('hasMany', function() {
         }
       }`
 
-      const results = yield graphqlWithSchema(query);
+      const results = await graphqlWithSchema(query);
 
       expect(results).toEqual({
         data: {
@@ -100,9 +101,9 @@ describe('hasMany', function() {
         }
       });
       let { edges } = results.data.viewer.classrooms[0].homeworks;
-
-      expect(edges).toContain({ node: { content: homework1.get('content') }});
-      expect(edges).toContain({ node: { content: homework2.get('content') }});
+      const stripped = edges.map(({node: {content}}) => content);
+      expect(stripped).toContain(homework1.get('content'));
+      expect(stripped).toContain(homework2.get('content'));
     });
   });
 });
