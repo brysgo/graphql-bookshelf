@@ -5,12 +5,12 @@ import graphqlWithSchema from '../schema';
 describe('belongsTo', function() {
 
   describe('on a bookshelf belongsTo', function() {
-    it('returns associated content', function* () {
-      yield clean();
-      var student = yield Student.forge().save();
-      var homework = yield student.homeworks().create();
-      var classroom = yield Classroom.forge().save();
-      yield homework.set('classroom_id', classroom.get('id')).save();
+    it('returns associated content', async function () {
+      await clean();
+      var student = await Student.forge().save();
+      var homework = await student.homeworks().create();
+      var classroom = await Classroom.forge().save();
+      await homework.set('classroom_id', classroom.get('id')).save();
 
       let query = `{
         viewer(id: ${student.get('id')}) {
@@ -22,7 +22,7 @@ describe('belongsTo', function() {
         }
       }`
 
-      var results = yield graphqlWithSchema(query);
+      var results = await graphqlWithSchema(query);
 
       expect(results).toEqual({
         data: {

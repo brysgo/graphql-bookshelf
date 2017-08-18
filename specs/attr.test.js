@@ -5,9 +5,9 @@ import graphqlWithSchema from '../schema';
 describe('attr', function() {
 
   describe('on a bookshelf table attribute', function() {
-    it('returns the attribute', function* () {
-      yield clean();
-      var student = yield Student.forge({name: 'Marty Finklestein'}).save();
+    it('returns the attribute', async function () {
+      await clean();
+      var student = await Student.forge({name: 'Marty Finklestein'}).save();
 
       let query = `{
         viewer(id: ${student.get('id')}) {
@@ -15,7 +15,7 @@ describe('attr', function() {
         }
       }`
 
-      var results = yield graphqlWithSchema(query);
+      var results = await graphqlWithSchema(query);
 
       expect(results).toEqual({
         data: {
