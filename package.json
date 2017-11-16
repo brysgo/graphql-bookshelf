@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/jest -b --runInBand",
     "build": "./node_modules/.bin/babel src/index.js > index.js",
     "pretest": "npm run-script build",
-    "prepublish": "npm run-script build"
+    "prepare": "npm run-script build"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "graphql": "^0.11.0",
     "graphql-relay": "^0.5.1",
     "jest-cli": "^21.1.0",
-    "knex": "^0.14.0",
+    "knex": "^0.13.0",
     "regenerator-runtime": "^0.11.0",
     "sqlite3": "^3.1.8"
   },
@@ -50,7 +50,7 @@
     ]
   },
   "peerDependencies": {
-    "bookshelf": "^0.10.0",
-    "graphql": "^0.10.0"
+    "bookshelf": "^0.11.1",
+    "graphql": "^0.11.0"
   }
 }
