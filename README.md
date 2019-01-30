@@ -1,10 +1,8 @@
 # GraphQL + BookshelfJS
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/brysgo/graphql-bookshelf.svg)](https://greenkeeper.io/)
-
-[![Join the chat at https://gitter.im/brysgo/graphql-bookshelf](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/brysgo/graphql-bookshelf?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Build Status](https://travis-ci.org/brysgo/graphql-bookshelf.svg?branch=master)](https://travis-ci.org/brysgo/graphql-bookshelf)
+[![CircleCI][build-badge]][build]
+[![npm package][npm-badge]][npm]
+[![Greenkeeper badge][greenkeeper-badge]][greenkeeper]
 
 [![peerDependency Status](https://david-dm.org/brysgo/graphql-bookshelf/peer-status.svg)](https://david-dm.org/brysgo/graphql-bookshelf#info=peerDependencies)
 
@@ -107,3 +105,13 @@ Another thing this library could help with is optimization. Turing graphql queri
  4. Run the tests with `npm test`
  5. When they pass, submit a PR
 
+
+[build-badge]: https://circleci.com/gh/brysgo/graphql-bookshelf.svg?style=shield
+[build]: https://circleci.com/gh/brysgo/graphql-bookshelf
+
+[npm-badge]: https://img.shields.io/npm/v/graphql-bookshelf.png?style=flat-square
+[npm]: https://www.npmjs.org/package/graphql-bookshelf
+
+
+[greenkeeper-badge]: https://badges.greenkeeper.io/brysgo/graphql-bookshelf.svg
+[greenkeeper]: https://greenkeeper.io/
