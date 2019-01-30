@@ -32,8 +32,9 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+
       # run tests!
       - run: yarn test
+      - run: npx semantic-release
 
 
