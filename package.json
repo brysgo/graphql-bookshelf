@@ -1,6 +1,6 @@
 {
   "name": "graphql-bookshelf",
-  "version": "0.0.8",
+  "version": "0.0.0-semantic-release",
   "description": "Some help defining schema around bookshelfjs models.",
   "main": "index.js",
   "scripts": {
