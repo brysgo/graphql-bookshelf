@@ -34,8 +34,8 @@
     "babel-preset-stage-0": "^6.5.0",
     "bookshelf": "^0.14.2",
     "co": "^4.6.0",
-    "graphql": "^0.11.0",
-    "graphql-relay": "^0.5.1",
+    "graphql": "^14.1.1",
+    "graphql-relay": "^0.6.0",
     "jest-cli": "^21.1.0",
     "knex": "^0.16.3",
     "regenerator-runtime": "^0.13.2",
@@ -50,7 +50,7 @@
     ]
   },
   "peerDependencies": {
-    "bookshelf": "^0.11.1",
-    "graphql": "^0.11.0"
+    "bookshelf": "^0.14.2",
+    "graphql": "^14.1.1"
   }
 }
