@@ -50,7 +50,7 @@
     ]
   },
   "peerDependencies": {
-    "bookshelf": "^0.14.2",
-    "graphql": "^14.1.1"
+    "bookshelf": "^0.15.1",
+    "graphql": "^14.5.4"
   }
 }
