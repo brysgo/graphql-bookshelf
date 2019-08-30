@@ -1,3 +1,3 @@
-import "babel-polyfill";
+import "@babel/polyfill";
 
-global.knex = require('../connection').knex;
+global.knex = require("../connection").knex;
