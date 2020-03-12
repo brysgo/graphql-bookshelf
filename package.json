@@ -38,7 +38,7 @@
     "graphql-relay": "^0.6.0",
     "jest-cli": "^24.9.0",
     "knex": "^0.19.3",
-    "regenerator-runtime": "^0.13.3",
+    "regenerator-runtime": "^0.13.5",
     "sqlite3": "^4.1.0"
   },
   "jest": {
