@@ -36,7 +36,7 @@
     "co": "^4.6.0",
     "graphql": "^14.5.4",
     "graphql-relay": "^0.6.0",
-    "jest-cli": "^24.9.0",
+    "jest-cli": "^25.2.1",
     "knex": "^0.19.3",
     "regenerator-runtime": "^0.13.3",
     "sqlite3": "^4.1.0"
