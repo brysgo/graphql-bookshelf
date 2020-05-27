@@ -28,7 +28,7 @@
   "homepage": "https://github.com/brysgo/graphql-bookshelf#readme",
   "devDependencies": {
     "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.10.1",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "babel-jest": "^24.9.0",
